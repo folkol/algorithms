@@ -1,2 +1,4 @@
 This repo contains a bunch of algorithms implemented of kata reasons.
 (Also, to learn c!)
+
+Example: gcc -std=c99 quicksort.c
