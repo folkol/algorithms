@@ -92,7 +92,7 @@ int partition(int* elements, int left, int right, int pivot_index) {
 }
 
 void print_result(uint64_t elapsed_time) {
-  printf("Sorted list in %llu nanoseconds:\n", elapsed_time);
+  fprintf(stderr, "Sorted list in %llu nanoseconds:\n", elapsed_time);
   for(int c = 0; c < num_elements; c++) {
     printf("%d ", elements[c]);
   }
