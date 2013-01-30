@@ -27,7 +27,7 @@ void quicksort(int* elements, int num_elements);
 void recursive_quicksort(int* elements, int left, int right);
 void swap(int* a, int* b);
 int partition(int* elements, int left, int right, int pivot_index);
-void print_result();
+void print_result(uint64_t ela);
 
 void read_input() {
   int buffer_size = 1024;
@@ -91,17 +91,36 @@ int partition(int* elements, int left, int right, int pivot_index) {
   return store_index;
 }
 
-void print_result() {
-  printf("Sorted list:\n");
+void print_result(uint64_t elapsed_time) {
+  printf("Sorted list in %llu nanoseconds:\n", elapsed_time);
   for(int c = 0; c < num_elements; c++) {
     printf("%d ", elements[c]);
   }
 }
 
+int compare (const void * a, const void * b)
+{
+  return ( *(int*)a - *(int*)b );
+}
+
 int main(int argc, char** argv) {
   read_input();
-  quicksort(elements, num_elements);
-  print_result();
+
+  uint64_t elapsed;
+  if(argc > 1) {
+    fprintf(stderr, "Sorting array using standard library qsort");
+    GetPIDTimeInNanoseconds();
+    qsort (elements, num_elements, sizeof(int), compare);
+    elapsed = GetPIDTimeInNanoseconds();
+  } else {
+    fprintf(stderr, "Sorting array using folkol quicksort");
+    GetPIDTimeInNanoseconds();
+    quicksort(elements, num_elements);
+    elapsed = GetPIDTimeInNanoseconds();
+  }
+
+  print_result(elapsed);
+
   free(elements);
   elements = 0;
 }
