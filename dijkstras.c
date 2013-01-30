@@ -32,7 +32,15 @@ void print_graph() {
   printf("Printing adjacency matrix with size: %d\n", num_nodes);
   for(int i = 0; i < num_nodes; i++) {
     for(int j = 0; j < num_nodes; j++) {
-      printf("%c", adjacency_matrix[i][j] + '0');
+      // If part of path, print x...
+
+
+      // ...else print 0/1
+      if(adjacency_matrix[i][j]) {
+        printf("O");
+      } else {
+        printf(".");
+      }
     } 
     printf("\n");
   }
