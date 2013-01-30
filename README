@@ -1,9 +1,18 @@
 This repo contains a bunch of algorithms implemented of kata reasons.
 (Also, to learn c!)
-Also, using mac os x specific code. (Timing code for benchmarking)
 
-QUICKSORT:
+QUICKSORT
 Example: gcc -O3 -std=c99 quicksort.c
 for i in {1..10000000}; do echo $[ ( $RANDOM  )  + 1 ]; done > input_numbers
 cat input_numbers | ./a.out use_standard > sorted_array
 cat input_numbers | ./a.out > sorted_array
+
+DIJKSTRA
+Example: gcc -O3 -std=c99 dijkstra.c
+input: numnodes numedges startnode endnode numedges*{node_a node_b}
+representation: adjacency matrix
+output: node path and cost (a -> b -> c -> d: 24)
+
+A*
+Example: gcc -O3 -std=c99 astar.c
+
